@@ -9,14 +9,14 @@ const app = express();
 app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '50mb' }));
 
-app.use((req, res, next) => {
-  const token = process.env.API_SECRET;
-  if (token && req.headers['x-api-secret'] !== token) {
-    res.status(401).json({ error: 'Unauthorized' });
-    return;
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   const token = process.env.API_SECRET;
+//   if (token && req.headers['x-api-secret'] !== token) {
+//     res.status(401).json({ error: 'Unauthorized' });
+//     return;
+//   }
+//   next();
+// });
 
 const upload = multer({
   storage: multer.memoryStorage(),
